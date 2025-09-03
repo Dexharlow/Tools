@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ToolKit - Online Image & PDF Tools</title>
+
+  <!-- SEO Meta -->
+  <meta name="description" content="Free online toolkit for image compression, PDF conversion, editing, and optimization. No installation required.">
+  <meta name="keywords" content="image tools, pdf tools, compressor, converter, editor, free online">
+  <meta name="author" content="ToolKit">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    * {
+      margin: 0; padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    :root {
+      --primary: #4361ee;
+      --secondary: #3a0ca3;
+      --accent: #7209b7;
+      --light: #f8f9fa;
+      --dark: #212529;
+      --success: #4cc9f0;
+      --warning: #f72585;
+      --gray: #6c757d;
+      --border-radius: 12px;
+      --box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
+    }
+
+    body {
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      color: var(--dark);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header */
+    header {
+      background: white;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0; z-index: 100;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+    }
+
+    .logo {
+      display: flex; align-items: center;
+      gap: 10px; font-size: 1.8rem;
+      font-weight: 700; color: var(--primary);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex; gap: 25px;
+    }
+
+    .nav-links a {
+      color: var(--dark);
+      text-decoration: none;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover { color: var(--primary); }
+
+    .btn {
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      color: white; border: none;
+      padding: 10px 20px; font-size: 1rem;
+      border-radius: 50px; cursor: pointer;
+      font-weight: 500; transition: var(--transition);
+    }
+
+    .btn:hover { transform: translateY(-3px); box-shadow: 0 7px 15px rgba(67,97,238,0.3); }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+    .hamburger span {
+      width: 25px; height: 3px;
+      background: var(--dark);
+      transition: 0.3s;
+    }
+
+    /* Hero */
+    .hero { padding: 80px 0; text-align: center; }
+    .hero h1 {
+      font-size: 3rem; margin-bottom: 20px;
+      background: linear-gradient(to right, var(--secondary), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 700;
+    }
+    .hero p {
+      font-size: 1.2rem; max-width: 700px;
+      margin: 0 auto 40px; color: var(--gray);
+    }
+    .hero-buttons { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
+
+    /* Tools Section */
+    .section-title {
+      text-align: center; margin: 40px 0;
+      font-size: 2.2rem; color: var(--secondary);
+    }
+
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px; margin-bottom: 60px;
+    }
+
+    .tool-card {
+      background: white; border-radius: var(--border-radius);
+      padding: 25px; box-shadow: var(--box-shadow);
+      transition: var(--transition); text-align: center;
+    }
+    .tool-card:hover {
+      transform: translateY(-5px);
+      background: linear-gradient(135deg,#f8f9fa,#edf2ff);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    }
+
+    .tool-icon {
+      width: 70px; height: 70px;
+      background: var(--light); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 20px; font-size: 1.8rem; color: var(--primary);
+    }
+
+    /* Footer */
+    footer { background: var(--dark); color: white; padding: 60px 0 30px; }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 40px; margin-bottom: 40px;
+    }
+    .footer-links { list-style: none; }
+    .footer-links li { margin-bottom: 10px; }
+    .footer-links a { color: #ccc; text-decoration: none; }
+    .footer-links a:hover { color: white; }
+
+    .social-links { display: flex; gap: 15px; margin-top: 20px; }
+    .social-links a {
+      width: 40px; height: 40px;
+      border-radius: 50%; background: rgba(255,255,255,0.1);
+      display: flex; align-items: center; justify-content: center;
+      color: white; transition: var(--transition);
+    }
+    .social-links a:hover { background: var(--primary); transform: translateY(-3px); }
+
+    .copyright {
+      text-align: center; padding-top: 30px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      color: #ccc; font-size: 0.9rem;
+    }
+
+    /* Responsive */
+    @media(max-width: 768px) {
+      .hamburger { display: flex; }
+      .nav-links {
+        position: absolute; top: 70px; right: 20px;
+        background: white; flex-direction: column;
+        gap: 15px; padding: 20px;
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        display: none;
+      }
+      .nav-links.show { display: flex; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <nav class="navbar">
+        <a href="#" class="logo"><i class="fas fa-tools"></i> ToolKit</a>
+        <div class="nav-links" id="navLinks">
+          <a href="#home">Home</a>
+          <a href="#image-tools">Image Tools</a>
+          <a href="#pdf-tools">PDF Tools</a>
+          <a href="#features">Features</a>
+          <a href="#about">About</a>
+        </div>
+        <button class="btn">Sign Up Free</button>
+        <div class="hamburger" id="hamburger">
+          <span></span><span></span><span></span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <div class="container">
+      <h1>All Your Image & PDF Tools in One Place</h1>
+      <p>Free online tools to compress, convert, edit and optimize your images and PDF files. No installation required.</p>
+      <div class="hero-buttons">
+        <button class="btn"><i class="fas fa-image"></i> Image Tools</button>
+        <button class="btn"><i class="fas fa-file-pdf"></i> PDF Tools</button>
+        <button class="btn" style="background: linear-gradient(to right, #25d366, #2fcb52);">
+          <i class="fas fa-bolt"></i> Quick Tools
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Image Tools -->
+  <section class="container" id="image-tools">
+    <h2 class="section-title">Image Tools</h2>
+    <div class="tools-grid">
+      <div class="tool-card">
+        <div class="tool-icon"><i class="fas fa-compress-arrows-alt"></i></div>
+        <h3>Image Compressor</h3>
+        <p>Reduce image file size without losing quality</p>
+        <button class="btn">Use Tool</button>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon"><i class="fas fa-exchange-alt"></i></div>
+        <h3>Image Converter</h3>
+        <p>Convert between JPG, PNG, WebP and more</p>
+        <button class="btn">Use Tool</button>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon"><i class="fas fa-crop"></i></div>
+        <h3>Image Resizer</h3>
+        <p>Resize your images to any dimension</p>
+        <button class="btn">Use Tool</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- PDF Tools -->
+  <section class="container" id="pdf-tools">
+    <h2 class="section-title">PDF Tools</h2>
+    <div class="tools-grid">
+      <div class="tool-card">
+        <div class="tool-icon"><i class="fas fa-file-pdf"></i></div>
+        <h3>PDF Compressor</h3>
+        <p>Reduce PDF file size while keeping quality</p>
+        <button class="btn">Use Tool</button>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon"><i class="fas fa-exchange-alt"></i></div>
+        <h3>PDF Converter</h3>
+        <p>Convert PDF to Word, Excel, JPG and more</p>
+        <button class="btn">Use Tool</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="features" id="features">
+    <div class="container">
+      <h2 class="section-title">Why Choose Our Tools</h2>
+      <div class="tools-grid">
+        <div class="tool-card"><i class="fas fa-lock fa-2x"></i><h3>Secure</h3><p>Your files never leave your device.</p></div>
+        <div class="tool-card"><i class="fas fa-bolt fa-2x"></i><h3>Fast</h3><p>Optimized to work in seconds.</p></div>
+        <div class="tool-card"><i class="fas fa-dollar-sign fa-2x"></i><h3>Free</h3><p>No hidden costs or signups.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="about">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h3>ToolKit</h3>
+          <p>Your all-in-one solution for image and PDF tools.</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+        <div>
+          <h3>Company</h3>
+          <ul class="footer-links">
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Privacy</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>&copy; 2025 ToolKit. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+  </script>
+</body>
+</html>
