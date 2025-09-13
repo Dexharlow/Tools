@@ -1,168 +1,227 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Weapons Explorer - Global Military Arsenal</title>
-  <meta name="description" content="Explore weapons of all countries - Army, Air Force, Navy - with images and details powered by Wikipedia. Created by Harshit Chaturvedi.">
-  <meta name="keywords" content="weapons, global arsenal, military, army weapons, air force, navy, tanks, jets, missiles, guns, defense, Harshit Chaturvedi">
-  <meta name="author" content="Harshit Chaturvedi">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Minimal PDF Tools — Merge, Split, Compress, Rotate</title>
+  <meta name="description" content="Free online PDF tools: merge, split, rotate, compress, extract pages. All done securely in your browser with no uploads." />
+  <meta name="keywords" content="PDF merge, PDF split, PDF rotate, PDF compress, PDF extract, free online PDF tools" />
+  <meta property="og:title" content="Minimal PDF Tools" />
+  <meta property="og:description" content="Fast, private, and free PDF merge, split, rotate, compress, extract tools." />
+  <meta property="og:type" content="website" />
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- AdSense Script -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-xxxxxxxx"
+  <!-- pdf-lib for PDF editing -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+  <!-- pdf.js for preview -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.min.js"></script>
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6347863712874280"
      crossorigin="anonymous"></script>
-
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f4f6f8;
-      color: #222;
-    }
-    header {
-      background: #111;
-      color: #fff;
-      padding: 20px;
-      text-align: center;
-    }
-    header h1 { margin: 0; font-size: 28px; }
-    header .sub { font-size: 13px; color: #bbb; }
-
-    nav {
-      background: #222;
-      padding: 10px;
-      text-align: center;
-    }
-    nav input {
-      padding: 10px;
-      width: 70%;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-      font-size: 16px;
-    }
-    nav button {
-      padding: 10px 14px;
-      border: none;
-      background: #0066cc;
-      color: #fff;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-
-    main { padding: 20px; }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
-    .card {
-      background: #fff;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      padding: 15px;
-      transition: transform 0.2s;
-    }
-    .card:hover { transform: scale(1.03); }
-    .card img { width: 100%; border-radius: 6px; }
-    .card h3 { margin: 10px 0 5px; }
-    .card p { font-size: 14px; color: #555; }
-
-    footer {
-      background: #111;
-      color: #bbb;
-      text-align: center;
-      padding: 15px;
-      font-size: 13px;
-      margin-top: 20px;
-    }
-  </style>
 </head>
-<body>
-  <header>
-    <h1>Weapons Explorer</h1>
-    <div class="sub">Army • Air Force • Navy • Countries — Powered by Wikipedia • Author: <b>Harshit Chaturvedi</b></div>
-
-    <!-- Top Banner Ad -->
-    <div style="margin:15px 0;">
-      <ins class="adsbygoogle"
-          style="display:block"
-          data-ad-client="ca-pub-xxxxxxxx"
-          data-ad-slot="1111111111"
-          data-ad-format="auto"
-          data-full-width-responsive="true"></ins>
-      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    </div>
+<body class="bg-gradient-to-br from-gray-50 to-gray-200 min-h-screen text-gray-800 flex flex-col">
+  <header class="bg-gradient-to-r from-indigo-500 to-purple-600 text-white shadow-lg p-6">
+    <h1 class="text-3xl font-bold text-center">📄 Minimal PDF Tools</h1>
+    <p class="text-center mt-2">Fast, Private, and Free — All processing happens in your browser</p>
   </header>
 
-  <nav>
-    <input id="search" type="text" placeholder="Search for any weapon (e.g. AK-47, F-16, T-90)...">
-    <button onclick="searchWeapon()">Search</button>
-  </nav>
+  <!-- Top Ad -->
+  <div class="container mx-auto my-4 text-center">
+    <ins class="adsbygoogle"
+         style="display:block; text-align:center;"
+         data-ad-layout="in-article"
+         data-ad-format="fluid"
+         data-ad-client="ca-pub-6347863712874280"
+         data-ad-slot="1593578144"></ins>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
 
-  <main>
-    <div id="results" class="grid"></div>
-
-    <!-- In-feed Ad -->
-    <div style="margin:20px 0;">
-      <ins class="adsbygoogle"
-          style="display:block"
-          data-ad-client="ca-pub-xxxxxxxx"
-          data-ad-slot="2222222222"
-          data-ad-format="auto"
-          data-full-width-responsive="true"></ins>
-      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  <main class="flex-1 container mx-auto px-4 py-8 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <!-- Merge PDF Card -->
+    <div class="bg-white rounded-2xl shadow-lg p-6 hover:shadow-2xl transition">
+      <h2 class="text-xl font-semibold mb-3">Merge PDFs</h2>
+      <input type="file" id="mergeInput" multiple accept="application/pdf" class="mb-3" />
+      <button onclick="mergePDFs()" class="bg-indigo-600 text-white px-4 py-2 rounded-lg">Merge</button>
     </div>
 
-    <div id="status" style="margin-top:16px;color:#666"></div>
+    <!-- Inline Ad -->
+    <div class="col-span-full my-6">
+      <ins class="adsbygoogle"
+           style="display:block; text-align:center;"
+           data-ad-layout="in-article"
+           data-ad-format="fluid"
+           data-ad-client="ca-pub-6347863712874280"
+           data-ad-slot="1593578144"></ins>
+      <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
+
+    <!-- Split PDF Card -->
+    <div class="bg-white rounded-2xl shadow-lg p-6 hover:shadow-2xl transition">
+      <h2 class="text-xl font-semibold mb-3">Split PDF</h2>
+      <input type="file" id="splitInput" accept="application/pdf" class="mb-3" />
+      <button onclick="splitPDF()" class="bg-indigo-600 text-white px-4 py-2 rounded-lg">Split</button>
+    </div>
+
+    <!-- Rotate PDF Card -->
+    <div class="bg-white rounded-2xl shadow-lg p-6 hover:shadow-2xl transition">
+      <h2 class="text-xl font-semibold mb-3">Rotate PDF</h2>
+      <input type="file" id="rotateInput" accept="application/pdf" class="mb-3" />
+      <button onclick="rotatePDF()" class="bg-indigo-600 text-white px-4 py-2 rounded-lg">Rotate</button>
+    </div>
+
+    <!-- Inline Ad -->
+    <div class="col-span-full my-6">
+      <ins class="adsbygoogle"
+           style="display:block; text-align:center;"
+           data-ad-layout="in-article"
+           data-ad-format="fluid"
+           data-ad-client="ca-pub-6347863712874280"
+           data-ad-slot="1593578144"></ins>
+      <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
+
+    <!-- Compress PDF Card -->
+    <div class="bg-white rounded-2xl shadow-lg p-6 hover:shadow-2xl transition">
+      <h2 class="text-xl font-semibold mb-3">Compress PDF</h2>
+      <input type="file" id="compressInput" accept="application/pdf" class="mb-3" />
+      <button onclick="compressPDF()" class="bg-indigo-600 text-white px-4 py-2 rounded-lg">Compress</button>
+    </div>
+
+    <!-- Extract Pages Card -->
+    <div class="bg-white rounded-2xl shadow-lg p-6 hover:shadow-2xl transition">
+      <h2 class="text-xl font-semibold mb-3">Extract Pages</h2>
+      <input type="file" id="extractInput" accept="application/pdf" class="mb-3" />
+      <button onclick="extractPages()" class="bg-indigo-600 text-white px-4 py-2 rounded-lg">Extract</button>
+    </div>
+
+    <!-- Inline Ad -->
+    <div class="col-span-full my-6">
+      <ins class="adsbygoogle"
+           style="display:block; text-align:center;"
+           data-ad-layout="in-article"
+           data-ad-format="fluid"
+           data-ad-client="ca-pub-6347863712874280"
+           data-ad-slot="1593578144"></ins>
+      <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
+
+    <!-- Preview PDF Card -->
+    <div class="bg-white rounded-2xl shadow-lg p-6 hover:shadow-2xl transition">
+      <h2 class="text-xl font-semibold mb-3">Preview PDF</h2>
+      <input type="file" id="previewInput" accept="application/pdf" class="mb-3" />
+      <canvas id="pdfPreview" class="border rounded-lg"></canvas>
+    </div>
   </main>
 
-  <footer>
-    Data from Wikipedia (CC BY-SA). Informational only. © 2025 <b>Harshit Chaturvedi</b>
-    <div style="margin-top:10px;">
-      <!-- Footer Ad -->
+  <footer class="bg-gray-800 text-white text-center p-4 mt-8">
+    <p>&copy; 2025 Minimal PDF Tools — All rights reserved.</p>
+    <!-- Bottom Ad -->
+    <div class="my-4">
       <ins class="adsbygoogle"
-          style="display:block"
-          data-ad-client="ca-pub-xxxxxxxx"
-          data-ad-slot="3333333333"
-          data-ad-format="auto"
-          data-full-width-responsive="true"></ins>
-      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+           style="display:block; text-align:center;"
+           data-ad-layout="in-article"
+           data-ad-format="fluid"
+           data-ad-client="ca-pub-6347863712874280"
+           data-ad-slot="1593578144"></ins>
+      <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
     </div>
   </footer>
 
   <script>
-    async function searchWeapon() {
-      const query = document.getElementById("search").value.trim();
-      const results = document.getElementById("results");
-      const status = document.getElementById("status");
-      results.innerHTML = "";
-      status.textContent = "Loading...";
-
-      if (!query) {
-        status.textContent = "Please enter a weapon name.";
-        return;
+    async function mergePDFs() {
+      const input = document.getElementById('mergeInput');
+      if (!input.files.length) return alert("Please select PDFs");
+      const mergedPdf = await PDFLib.PDFDocument.create();
+      for (let file of input.files) {
+        const bytes = await file.arrayBuffer();
+        const pdf = await PDFLib.PDFDocument.load(bytes);
+        const copied = await mergedPdf.copyPages(pdf, pdf.getPageIndices());
+        copied.forEach(p => mergedPdf.addPage(p));
       }
+      const mergedBytes = await mergedPdf.save();
+      downloadPDF(mergedBytes, "merged.pdf");
+    }
 
-      try {
-        const url = `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(query)}`;
-        const response = await fetch(url);
-        if (!response.ok) throw new Error("Not found");
-
-        const data = await response.json();
-        results.innerHTML = `
-          <div class="card">
-            ${data.thumbnail ? `<img src="${data.thumbnail.source}" alt="${data.title}">` : ""}
-            <h3>${data.title}</h3>
-            <p>${data.extract}</p>
-            <a href="https://en.wikipedia.org/wiki/${encodeURIComponent(data.title)}" target="_blank">Read more</a>
-          </div>
-        `;
-        status.textContent = "";
-      } catch (e) {
-        status.textContent = "No results found. Try another weapon.";
+    async function splitPDF() {
+      const input = document.getElementById('splitInput');
+      if (!input.files.length) return alert("Select a PDF");
+      const bytes = await input.files[0].arrayBuffer();
+      const pdf = await PDFLib.PDFDocument.load(bytes);
+      for (let i = 0; i < pdf.getPageCount(); i++) {
+        const newPdf = await PDFLib.PDFDocument.create();
+        const [page] = await newPdf.copyPages(pdf, [i]);
+        newPdf.addPage(page);
+        const newBytes = await newPdf.save();
+        downloadPDF(newBytes, `page-${i+1}.pdf`);
       }
     }
+
+    async function rotatePDF() {
+      const input = document.getElementById('rotateInput');
+      if (!input.files.length) return alert("Select a PDF");
+      const bytes = await input.files[0].arrayBuffer();
+      const pdf = await PDFLib.PDFDocument.load(bytes);
+      pdf.getPages().forEach(p => p.setRotation(PDFLib.degrees(90)));
+      const rotatedBytes = await pdf.save();
+      downloadPDF(rotatedBytes, "rotated.pdf");
+    }
+
+    async function compressPDF() {
+      const input = document.getElementById('compressInput');
+      if (!input.files.length) return alert("Select a PDF");
+      const bytes = await input.files[0].arrayBuffer();
+      const pdf = await PDFLib.PDFDocument.load(bytes);
+      const compressedBytes = await pdf.save({ useObjectStreams: true });
+      downloadPDF(compressedBytes, "compressed.pdf");
+    }
+
+    async function extractPages() {
+      const input = document.getElementById('extractInput');
+      if (!input.files.length) return alert("Select a PDF");
+      const bytes = await input.files[0].arrayBuffer();
+      const pdf = await PDFLib.PDFDocument.load(bytes);
+      const newPdf = await PDFLib.PDFDocument.create();
+      const pagesToExtract = [0, 1, 2];
+      const copied = await newPdf.copyPages(pdf, pagesToExtract);
+      copied.forEach(p => newPdf.addPage(p));
+      const extractedBytes = await newPdf.save();
+      downloadPDF(extractedBytes, "extracted.pdf");
+    }
+
+    function downloadPDF(bytes, name) {
+      const blob = new Blob([bytes], { type: 'application/pdf' });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = name;
+      link.click();
+    }
+
+    document.getElementById('previewInput').addEventListener('change', async (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      const bytes = await file.arrayBuffer();
+      const pdf = await pdfjsLib.getDocument({ data: bytes }).promise;
+      const page = await pdf.getPage(1);
+      const viewport = page.getViewport({ scale: 1.5 });
+      const canvas = document.getElementById('pdfPreview');
+      const ctx = canvas.getContext('2d');
+      canvas.height = viewport.height;
+      canvas.width = viewport.width;
+      await page.render({ canvasContext: ctx, viewport }).promise;
+    });
   </script>
 </body>
 </html>
